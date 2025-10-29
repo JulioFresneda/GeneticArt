@@ -14,16 +14,19 @@ int main() {
 
     int width = img.width;
     int height = img.height;
-    GeneticAlgorithm ga(2, width, height, 100, 100, 1, ShapeType::Circle, BlendMode::AlphaOver);
+
+    // Render original
+    auto originalPixels = imageToPixels(img);
+    drawPixels(width, height, originalPixels, "", true);
+
+    GeneticAlgorithm ga(100, 3, 1, width, height, originalPixels, 100, 5000, 10000, ShapeType::Circle, BlendMode::AlphaOver);
     Individual bestIndividual = ga.BestIndividual();
 
     // Render and show the best individual using free functions
     auto pixels = renderIndividualToPixels(width, height, bestIndividual, BlendMode::AlphaOver);
     drawPixels(width, height, pixels, "", true);
 
-    // Render original
-    auto originalPixels = imageToPixels(img);
-    drawPixels(width, height, originalPixels, "", true);
+    
 
     return 0;
 }

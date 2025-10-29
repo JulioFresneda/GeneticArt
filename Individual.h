@@ -53,6 +53,12 @@ public:
         dna.push_back(Gene(x, y, c, shape, s));
     }
 
+    void delete_random_gene(Random& rand) {
+        if (dna.empty()) return;
+        int gene_index = rand.getInt(0, static_cast<int>(dna.size()) - 1);
+        dna.erase(dna.begin() + gene_index);
+    }
+
     void mutate_random_gene(Random& rand, int img_width, int img_height) {
         if (dna.empty()) return;
         int gene_index = rand.getInt(0, static_cast<int>(dna.size()) - 1);
