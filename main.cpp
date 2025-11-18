@@ -10,7 +10,7 @@ int main() {
     std::cout << "Hello, Genetic Art!" << std::endl;
 
     // Load an image
-    Image img = loadImage("./pic.jpg");
+    Image img = loadImage("./pic.png");
 
     int width = img.width;
     int height = img.height;
@@ -19,7 +19,7 @@ int main() {
     auto originalPixels = imageToPixels(img);
     drawPixels(width, height, originalPixels, "", true);
 
-    GeneticAlgorithm ga(100, 3, 1, width, height, originalPixels, 100, 5000, 10000, ShapeType::Circle, BlendMode::AlphaOver);
+    GeneticAlgorithm ga(100, 5, 3, width, height, originalPixels, 100, 5000, 100000, ShapeType::Circle, BlendMode::AlphaOver);
     Individual bestIndividual = ga.BestIndividual();
 
     // Render and show the best individual using free functions

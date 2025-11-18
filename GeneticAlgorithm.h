@@ -43,7 +43,7 @@ public:
 
             std::cout << "Generation " << gen + 1 << ". Best fitness: " << population[0].fitness << " with " << population[0].dna.size() << " genes." << std::endl;
             
-            if(gen % 100 == 0){
+            if(gen % 250 == 0){
                 drawPixels(imgWidth, imgHeight, renderIndividualToPixels(imgWidth, imgHeight, population[0], blendMode), "./images/Generation " + std::to_string(gen + 1) + ".tga", false);
             }
         }
@@ -224,11 +224,11 @@ private:
             individual.mutate_random_gene(rand, imgWidth, imgHeight);
             mutated = true;
         }
-        if (rand.getDouble(0.0, 1.0) < 0.5) { // 10% mutation rate
+        if (rand.getDouble(0.0, 1.0) < 0.2) { // 10% mutation rate
             individual.add_random_gene(rand, imgWidth, imgHeight, maxGeneSize, shapeType);
             mutated = true;
         }
-        if (rand.getDouble(0.0, 1.0) < 0.5) { // 50% mutation rate
+        if (rand.getDouble(0.0, 1.0) < 0.2) { // 50% mutation rate
             individual.delete_random_gene(rand);
             mutated = true;
         }
